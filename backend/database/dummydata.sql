@@ -1,4 +1,4 @@
-INSERT INTO user (nama, tier, lokasi, top_kategori) VALUES(
+INSERT INTO users (user_name,user_tier , user_location , top_category) VALUES
 ('a', 'Silver', 'jawa', 'Kosmetik'),
 ('b', 'Silver', 'jawa', 'Makanan'),
 ('c', 'Silver', 'luarjawa', 'None'),
@@ -15,4 +15,4 @@ INSERT INTO user (nama, tier, lokasi, top_kategori) VALUES(
 ('m', 'Diamond', 'jawa', 'Kosmetik'),
 ('n', 'Diamond', 'jawa', 'Makanan'),
 ('o', 'Diamond', 'luarjawa', 'Tagihan'),
-('p', 'Diamond', 'luarjawa', 'Makanan'));
+('p', 'Diamond', 'luarjawa', 'Makanan')
