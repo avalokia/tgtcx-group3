@@ -36,15 +36,18 @@ INSERT INTO coupons (coupon_name,coupon_category,start_date,end_date) VALUES
 
 
 
-select *,case
-when user_tier = 'Silver' and user_location = 'luarjawa' and top_category !='None' then 'Coupon 100 Ongkir'
-when user_tier = 'Silver' and user_location = 'jawa' and top_category !='None' then 'Coupon 100 Potongan'
-when user_tier = 'Gold' and user_location = 'luarjawa' and top_category !='None' then 'Coupon 50 Ongkir'
-when user_tier = 'Gold' and user_location = 'jawa' and top_category !='None' then 'Coupon 50 Potongan'
-when user_tier = 'Platinum' and user_location = 'luarjawa' and top_category !='None' then 'Coupon 70 Ongkir + Special'
-when user_tier = 'Platinum' and user_location = 'jawa' and top_category !='None' then 'Coupon 70 Potongan + Special'
-when user_tier = 'Diamond' and user_location = 'luarjawa' and top_category !='None' then 'Coupon 100 Ongkir + Special'
-when user_tier = 'Diamond' and user_location = 'jawa' and top_category !='None' then 'Coupon 100 Potongan + Special'
+insert into user_coupons (user_id,coupon_id)
+select user_id,case
+when user_tier = 'Silver' and user_location = 'luarjawa' and top_category !='None' then '3'
+when user_tier = 'Silver' and user_location = 'jawa' and top_category !='None' then '7'
+when user_tier = 'Gold' and user_location = 'luarjawa' and top_category !='None' then '1'
+when user_tier = 'Gold' and user_location = 'jawa' and top_category !='None' then '5'
+when user_tier = 'Platinum' and user_location = 'luarjawa' and top_category !='None' then'2,4'
+when user_tier = 'Platinum' and user_location = 'jawa' and top_category !='None' then '6,4'
+when user_tier = 'Diamond' and user_location = 'luarjawa' and top_category !='None' then '3,4'
+when user_tier = 'Diamond' and user_location = 'jawa' and top_category !='None' then '7,4'
 when top_category ='None' then 'Coupon'
-end as kupon
+end as coupond_id
 from users
+
+
