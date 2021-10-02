@@ -16,3 +16,20 @@ INSERT INTO users (user_name,user_tier , user_location , top_category) VALUES
 ('n', 'Diamond', 'jawa', 'Makanan'),
 ('o', 'Diamond', 'luarjawa', 'Tagihan'),
 ('p', 'Diamond', 'luarjawa', 'Makanan')
+
+
+INSERT INTO coupons (coupon_name,coupon_category,start_date,end_date) VALUES
+('coupon 50', 'ONGKIR', '2021-10-03', '2021-10-10'),
+('coupon 70', 'ONGKIR', '2021-10-03',  '2021-10-10'),
+('coupon 100', 'ONGKIR', '2021-10-03',  '2021-10-10'),
+('coupon spesial', 'Special', '2021-10-03',  '2021-10-10'),
+('coupon 50', 'POTONGAN', '2021-10-03',  '2021-10-10'),
+('coupon 70', 'POTONGAN', '2021-10-03',  '2021-10-10'),
+('coupon 100', 'POTONGAN', '2021-10-03',  '2021-10-10'),
+('coupon 50', 'ONGKIR', '2021-10-10', '2021-10-17'),
+('coupon 70', 'ONGKIR', '2021-10-10',  '2021-10-17'),
+('coupon 100', 'ONGKIR', '2021-10-10',  '2021-10-17'),
+('coupon spesial', 'Special', '2021-10-10',  '2021-10-17'),
+('coupon 50', 'POTONGAN', '2021-10-10',  '2021-10-17'),
+('coupon 70', 'POTONGAN', '2021-10-10',  '2021-10-17'),
+('coupon 100', 'POTONGAN', '2021-10-10',  '2021-10-17')
