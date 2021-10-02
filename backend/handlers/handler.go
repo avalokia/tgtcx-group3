@@ -47,16 +47,19 @@ func GetCouponList(w http.ResponseWriter, r *http.Request) {
 }
 
 func UpdateCoupon(w http.ResponseWriter, r *http.Request) {
-	// var p dictionary.Product
+	var c dictionary.Coupons
 
-	// if err := json.NewDecoder(r.Body).Decode(&p); err != nil {
-	// 	http.Error(w, "bad request", 400)
-	// 	return
-	// }
+	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
+		http.Error(w, "bad request", 400)
+		return
+	}
 
-	// product.UpdateProduct(context.Background(), p)
+	result, err := service.UpdateCoupon(c)
 
-	// fmt.Fprintf(w, "success")
+	if err != nil {
+		fmt.Fprintln(w, err.Error())
+	}
+	fmt.Fprintln(w, "success updating", result.ID, ": ", result.Name)
 }
 
 func SetTargetUsers(w http.ResponseWriter, r *http.Request) {
