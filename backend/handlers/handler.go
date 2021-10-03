@@ -62,6 +62,22 @@ func UpdateCoupon(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "success updating", result.ID, ": ", result.Name)
 }
 
+func SetCouponDuration(w http.ResponseWriter, r *http.Request) {
+	var c dictionary.Coupons
+
+	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
+		http.Error(w, "bad request", 400)
+		return
+	}
+
+	result, err := service.SetCouponDuration(c)
+
+	if err != nil {
+		fmt.Fprintln(w, err.Error())
+	}
+	fmt.Fprintln(w, "success setting coupon duration ", result.ID, ": ", result.Name)
+}
+
 func SetTargetUsers(w http.ResponseWriter, r *http.Request) {
 	// var p dictionary.Product
 
