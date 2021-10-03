@@ -21,6 +21,8 @@ func main() {
 
 	router.HandleFunc("/upload-coupon", handlers.UploadCoupon).Methods(http.MethodPost)
 	router.HandleFunc("/get-coupon-list", handlers.GetCouponList).Methods(http.MethodGet)
+	router.HandleFunc("/get-coupon-by-id", handlers.GetCouponByID).Methods(http.MethodGet)
+	router.HandleFunc("/get-coupon-by-user-id", handlers.GetCouponByUser).Methods(http.MethodGet)
 	router.HandleFunc("/update-coupon", handlers.UpdateCoupon).Methods(http.MethodPatch)
 	router.HandleFunc("/set-coupon-duration", handlers.SetCouponDuration).Methods(http.MethodPatch)
 	router.HandleFunc("/set-target-users", handlers.SetTargetUsers).Methods(http.MethodPatch)

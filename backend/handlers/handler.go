@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/avalokia/tgtcx/backend/dictionary"
 	"github.com/avalokia/tgtcx/backend/service"
@@ -44,6 +45,55 @@ func GetCouponList(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Write(parsedList)
+}
+
+func GetCouponByID(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	idstring := r.URL.Query().Get("id")
+
+	idInt64, err := strconv.ParseInt(idstring, 10, 64)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// p, err := product.GetProduct(context.Background(), idInt64)
+	p, err := service.GetCouponByID(int(idInt64))
+	if err != nil {
+		// log.Fatal(err)
+		fmt.Fprintln(w, err.Error())
+	}
+
+	val, err := json.Marshal(p)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	w.Write(val)
+}
+
+func GetCouponByUser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	idstring := r.URL.Query().Get("user_id")
+
+	idInt64, err := strconv.ParseInt(idstring, 10, 64)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// p, err := product.GetProduct(context.Background(), idInt64)
+	p, err := service.GetCouponByUser(int(idInt64))
+	if err != nil {
+		fmt.Fprintln(w, err.Error())
+	}
+
+	val, err := json.Marshal(p)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	w.Write(val)
 }
 
 func UpdateCoupon(w http.ResponseWriter, r *http.Request) {
