@@ -16,13 +16,13 @@ var CouponType = graphql.NewObject(
 			"category": &graphql.Field{
 				Type: graphql.String,
 			},
+			"potongan": &graphql.Field{
+				Type: graphql.Int,
+			},
 			"start_date": &graphql.Field{
 				Type: graphql.String,
 			},
 			"end_date": &graphql.Field{
-				Type: graphql.String,
-			},
-			"status": &graphql.Field{
 				Type: graphql.String,
 			},
 		},

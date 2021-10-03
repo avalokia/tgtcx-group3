@@ -14,6 +14,7 @@ type Coupons struct {
 	ID        int64  `json:"id"`
 	Name      string `json:"name"`
 	Category  string `json:"category"`
+	Potongan  int64  `json:"potongan"`
 	StartDate string `json:"start_date"`
 	EndDate   string `json:"end_date"`
 	Status    string `json:"status"`

@@ -19,18 +19,21 @@ func UploadCoupon(data dictionary.Coupons) (dictionary.Coupons, error) {
 	(
 		coupon_name, 
 		coupon_category, 
+		potongan,
 		start_date, 
 		end_date) 
 		VALUES (
 			$1, 
 			$2, 
 			$3, 
-			$4)
+			$4,
+			$5)
 	`
 	// actual query process
 	result, err := db.Exec(query,
 		data.Name,
 		data.Category,
+		data.Potongan,
 		data.StartDate,
 		data.EndDate,
 	)

@@ -43,12 +43,14 @@ func (r *Resolver) UploadCoupon() graphql.FieldResolveFn {
 	return func(p graphql.ResolveParams) (interface{}, error) {
 		name, _ := p.Args["coupon_name"].(string)
 		category, _ := p.Args["coupon_category"].(string)
+		potongan, _ := p.Args["potongan"].(int64)
 		startDate, _ := p.Args["start_date"].(string)
 		endDate, _ := p.Args["end_date"].(string)
 
 		req := dictionary.Coupons{
 			Name:      name,
 			Category:  category,
+			Potongan:  potongan,
 			StartDate: startDate,
 			EndDate:   endDate,
 		}

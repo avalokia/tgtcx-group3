@@ -12,7 +12,7 @@ import (
 	"github.com/avalokia/tgtcx/backend/service"
 )
 
-var layout = "2021-10-01T00:00:00Z"
+var layout = "2006-01-02T15:04:05.000Z"
 
 func Ping(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "pong\n")

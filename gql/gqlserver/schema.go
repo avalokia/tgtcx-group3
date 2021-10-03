@@ -68,6 +68,9 @@ func (s *SchemaWrapper) Init() error {
 						"coupon_category": &graphql.ArgumentConfig{
 							Type: graphql.NewNonNull(graphql.String),
 						},
+						"potongan": &graphql.ArgumentConfig{
+							Type: graphql.NewNonNull(graphql.Int),
+						},
 						"start_date": &graphql.ArgumentConfig{
 							Type: graphql.String,
 						},
