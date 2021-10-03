@@ -21,8 +21,7 @@ func UpdateCoupon(data dictionary.Coupons) (dictionary.Coupons, error) {
 		coupon_name = $2,
 		coupon_category = $3,
 		start_date = $4,
-		end_date = $5,
-		status = $6
+		end_date = $5
 	WHERE
 		coupon_id = $1
 	`
@@ -33,7 +32,6 @@ func UpdateCoupon(data dictionary.Coupons) (dictionary.Coupons, error) {
 		data.Category,
 		data.StartDate,
 		data.EndDate,
-		data.Status,
 	)
 	if err != nil {
 		return data, err

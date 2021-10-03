@@ -26,7 +26,7 @@ func main() {
 
 	// this assumes main.go is called from root project,
 	// change this accordingly, if it's called elsewhere
-	fs := http.FileServer(http.Dir("/gql/webstatic"))
+	fs := http.FileServer(http.Dir("webstatic"))
 	router.PathPrefix("/").Handler(fs)
 
 	serverConfig := server.Config{

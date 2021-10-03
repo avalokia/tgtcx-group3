@@ -18,8 +18,7 @@ func GetCouponByID(paramID int) (dictionary.Coupons, error) {
 		coupon_name, 
 		coupon_category, 
 		start_date, 
-		end_date,
-		status
+		end_date
 	FROM 
 		coupons
 	WHERE coupon_id = $1
@@ -34,7 +33,6 @@ func GetCouponByID(paramID int) (dictionary.Coupons, error) {
 		&data.Category,
 		&data.StartDate,
 		&data.EndDate,
-		&data.Status,
 	)
 	if err != nil {
 		return data, err

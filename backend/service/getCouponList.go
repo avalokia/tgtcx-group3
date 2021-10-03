@@ -18,8 +18,7 @@ func GetCouponList() ([]dictionary.Coupons, error) {
 		coupon_name, 
 		coupon_category, 
 		start_date, 
-		end_date,
-		status
+		end_date
 	FROM 
 		coupons
 	`
@@ -40,7 +39,6 @@ func GetCouponList() ([]dictionary.Coupons, error) {
 			&data.Category,
 			&data.StartDate,
 			&data.EndDate,
-			&data.Status,
 		)
 		if err != nil {
 			return nil, err

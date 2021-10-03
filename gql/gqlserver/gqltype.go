@@ -28,3 +28,39 @@ var CouponType = graphql.NewObject(
 		},
 	},
 )
+
+var UserCouponType = graphql.NewObject(
+	graphql.ObjectConfig{
+		Name:        "UserCouponRelation",
+		Description: "Detail of the user coupon relation",
+		Fields: graphql.Fields{
+			"id": &graphql.Field{
+				Type: graphql.Int,
+			},
+			"username": &graphql.Field{
+				Type: graphql.String,
+			},
+			"user_id": &graphql.Field{
+				Type: graphql.Int,
+			},
+			"coupon_id": &graphql.Field{
+				Type: graphql.Int,
+			},
+			"coupon_name": &graphql.Field{
+				Type: graphql.String,
+			},
+			"coupon_category": &graphql.Field{
+				Type: graphql.String,
+			},
+			"start_date": &graphql.Field{
+				Type: graphql.String,
+			},
+			"end_date": &graphql.Field{
+				Type: graphql.String,
+			},
+			"status": &graphql.Field{
+				Type: graphql.String,
+			},
+		},
+	},
+)

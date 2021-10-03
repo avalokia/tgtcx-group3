@@ -6,10 +6,13 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/avalokia/tgtcx/backend/dictionary"
 	"github.com/avalokia/tgtcx/backend/service"
 )
+
+var layout = "2021-10-01T00:00:00Z"
 
 func Ping(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "pong\n")
@@ -119,13 +122,32 @@ func SetCouponDuration(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "bad request", 400)
 		return
 	}
+	//checking if the coupon is live or not
+	data, err := service.GetCouponByID(int(c.ID))
+	if err != nil {
+		// log.Fatal(err)
+		fmt.Fprintln(w, err.Error())
+	}
 
-	result, err := service.SetCouponDuration(c)
-
+	start, err := time.Parse(layout, data.StartDate)
 	if err != nil {
 		fmt.Fprintln(w, err.Error())
 	}
-	fmt.Fprintln(w, "success setting coupon duration ", result.ID, ": ", result.Name)
+	end, err := time.Parse(layout, data.EndDate)
+	if err != nil {
+		fmt.Fprintln(w, err.Error())
+	}
+
+	if start.Unix() < time.Now().Unix() && end.Unix() > time.Now().Unix() {
+		fmt.Fprintln(w, "The coupon is live and can't be updated!")
+	} else { //else, set the coupon duration
+		result, err := service.SetCouponDuration(c)
+		if err != nil {
+			fmt.Fprintln(w, err.Error())
+		}
+		fmt.Fprintln(w, "success setting coupon duration", result.Name)
+	}
+
 }
 
 func SetTargetUsers(w http.ResponseWriter, r *http.Request) {

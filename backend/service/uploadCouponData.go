@@ -20,14 +20,12 @@ func UploadCoupon(data dictionary.Coupons) (dictionary.Coupons, error) {
 		coupon_name, 
 		coupon_category, 
 		start_date, 
-		end_date,
-		status) 
+		end_date) 
 		VALUES (
 			$1, 
 			$2, 
 			$3, 
-			$4,
-			$5)
+			$4)
 	`
 	// actual query process
 	result, err := db.Exec(query,
@@ -35,7 +33,6 @@ func UploadCoupon(data dictionary.Coupons) (dictionary.Coupons, error) {
 		data.Category,
 		data.StartDate,
 		data.EndDate,
-		data.Status,
 	)
 	if err != nil {
 		return data, err
