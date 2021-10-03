@@ -32,21 +32,23 @@ INSERT INTO coupons (coupon_name,coupon_category,start_date,end_date) VALUES
 ('coupon spesial', 'Special', '2021-10-10',  '2021-10-17'),
 ('coupon 50', 'POTONGAN', '2021-10-10',  '2021-10-17'),
 ('coupon 70', 'POTONGAN', '2021-10-10',  '2021-10-17'),
-('coupon 100', 'POTONGAN', '2021-10-10',  '2021-10-17')
+('coupon 100', 'POTONGAN', '2021-10-10',  '2021-10-17'),
+('coupon', 'POTONGAN dan ongkir', '2021-10-10',  '2021-10-17')
+
 
 
 
 insert into user_coupons (user_id,coupon_id)
 select user_id,case
-when user_tier = 'Silver' and user_location = 'luarjawa' and top_category !='None' then '3'
-when user_tier = 'Silver' and user_location = 'jawa' and top_category !='None' then '7'
-when user_tier = 'Gold' and user_location = 'luarjawa' and top_category !='None' then '1'
-when user_tier = 'Gold' and user_location = 'jawa' and top_category !='None' then '5'
-when user_tier = 'Platinum' and user_location = 'luarjawa' and top_category !='None' then'2,4'
-when user_tier = 'Platinum' and user_location = 'jawa' and top_category !='None' then '6,4'
-when user_tier = 'Diamond' and user_location = 'luarjawa' and top_category !='None' then '3,4'
-when user_tier = 'Diamond' and user_location = 'jawa' and top_category !='None' then '7,4'
-when top_category ='None' then 'Coupon'
+when user_tier = 'Silver' and user_location = 'luarjawa' and top_category !='None' then 3
+when user_tier = 'Silver' and user_location = 'jawa' and top_category !='None' then 7
+when user_tier = 'Gold' and user_location = 'luarjawa' and top_category !='None' then 1
+when user_tier = 'Gold' and user_location = 'jawa' and top_category !='None' then 5
+when user_tier = 'Platinum' and user_location = 'luarjawa' and top_category !='None' then 2
+when user_tier = 'Platinum' and user_location = 'jawa' and top_category !='None' then 6
+when user_tier = 'Diamond' and user_location = 'luarjawa' and top_category !='None' then 3
+when user_tier = 'Diamond' and user_location = 'jawa' and top_category !='None' then 7
+when top_category ='None' then 15
 end as coupond_id
 from users
 
